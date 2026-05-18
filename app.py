@@ -109,15 +109,16 @@ def dashboard():
 # - Save data to the database (POST)
 # - Redirect back to dashboard
 # NOTE: Remove the triple """ before and after each route to 'uncomment'
-"""
+
 @app.route("/create", methods=["GET", "POST"])
 def create():
     if "user" not in session:
         return redirect(url_for("login"))
 
     if request.method == "POST":
-        # TODO: Get form data (title, content)
-
+        # TODO: Get form data (name, height)
+        name = request.form["username"].strip()
+        height = request.form["password"].strip()
         # TODO: Connect to database
 
         # TODO: Insert into entries table
@@ -128,7 +129,7 @@ def create():
         return redirect(url_for("dashboard"))
 
     return render_template("create.html")
-"""
+
 
 # ---------- UPDATE ----------
 # TODO: Create a route like /edit/<id>
