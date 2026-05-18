@@ -24,6 +24,11 @@ def seed_database():
         ("alice", "Password123!"),
         ("bob", "SecurePass456@"),
         ("charlie", "MyPassword789#"),
+        ("niko", "Boner!1"),
+    ]
+
+    sample_entries = [
+        ("clavicular", "5'11"),
     ]
     
     try:
@@ -34,6 +39,12 @@ def seed_database():
                 (username, hashed_pw)
             )
             print(f"Created user: {username}")
+        for name, height in sample_entries:
+            conn.execute(
+                "INSERT INTO entries (name, height) VALUES (?, ?)",
+                (name, height)
+            )
+            print(f"Created entry: {name}")
         
         conn.commit()
         print("\nDatabase seeding complete!")

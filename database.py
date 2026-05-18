@@ -14,5 +14,11 @@ def init_db():
             password TEXT
         )
     """)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS entries (
+            name TEXT PRIMARY KEY,
+            height TEXT
+        )
+    """)
     conn.commit()
     conn.close()

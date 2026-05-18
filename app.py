@@ -83,23 +83,23 @@ def dashboard():
         return redirect(url_for("login"))
 
     # TODO: Connect to the database
-    # conn = get_db()
+    conn = get_db()
 
     # TODO: Get all entries that belong to the logged-in user
     # Example:
-    # entries = conn.execute(
-    #     "SELECT * FROM entries"
-    # ).fetchall()
+    entries = conn.execute(
+        "SELECT * FROM entries"
+    ).fetchall()
 
     # TODO: Close the connection
-    # conn.close()
+    conn.close()
 
     # TODO: Pass entries into your template
     # Example:
-    # return render_template("dashboard.html", entries=entries, username=session["user"])
+    return render_template("dashboard.html", entries=entries, username=session["user"])
 
     # TEMPORARY (remove later)
-    return render_template("dashboard.html", username=session["user"])
+    # return render_template("dashboard.html", username=session["user"])
 
 
 # ---------- CREATE ----------
