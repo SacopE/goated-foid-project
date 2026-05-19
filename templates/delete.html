@@ -7,10 +7,15 @@
 
 <p>Are you sure you want to delete this entry?</p>
 
-<!-- TODO: Show entry title or content -->
+<h3>{{ entry['exercise'] }}</h3>
+<p>{{ entry['weight']}}</p>
+<p>{{ entry['reps']}}</p>
+<p>{{ entry['date']}}</p>
 
-<!-- TODO: Add a button to confirm delete -->
+<form method="POST">
+    <button type="submit" style="backround-color: red; color: white;">Yes, Delete Entry</button>
+</form>
 
-<!-- TODO: Add a cancel link back to dashboard -->
+<a href="{{ url_for('dashboard') }}">Cancel</a>
 
 {% endblock %}

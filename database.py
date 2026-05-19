@@ -17,8 +17,13 @@ def init_db():
     conn.execute("""
         CREATE TABLE IF NOT EXISTS entries (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT,
-            height TEXT
+            exercise TEXT,
+            weight TEXT,
+            reps TEXT,
+            date TEXT,
+            user_id INTEGER
+
+
         )
     """)
     conn.commit()

@@ -88,7 +88,8 @@ def dashboard():
     # TODO: Get all entries that belong to the logged-in user
     # Example:
     entries = conn.execute(
-        "SELECT * FROM entries"
+        "SELECT * FROM entries WHERE user_id=?",
+        (session["user"],)
     ).fetchall()
 
     # TODO: Close the connection
@@ -116,18 +117,19 @@ def create():
         return redirect(url_for("login"))
 
     if request.method == "POST":
-        # TODO: Get form data (name, height)
-        name = request.form["name"].strip()
-        height = request.form["height"].strip()
+        exercise = request.form["exercise"].strip()
+        weight = request.form["weight"].strip()
+        reps = request.form["reps"].strip()
+        date = request.form["date"].strip()
         # TODO: Connect to database
-        if not name or not height:
+        if not exercise or not weight or not reps or not date:
             error = "Fields cannot be empty"
         else:
             conn = get_db()
             try:
                 conn.execute(
-                    "INSERT INTO entries (name, height) VALUES (?, ?)",
-                    (name, height)
+                    "INSERT INTO entries (exercise, weight, reps, date, user_id) VALUES (?, ?, ?, ?, ?)",
+                    (exercise, weight, reps, date, session["user"])
                 )
                 conn.commit()
 
@@ -165,16 +167,18 @@ def edit(id):
         return "Entry not found"
 
     if request.method == "POST":
-        name = request.form["name"].strip()
-        height = request.form["height"].strip()
+        exercise = request.form["exercise"].strip()
+        weight = request.form["weight"].strip()
+        reps = request.form["reps"].strip()
+        date = request.form["date"].strip()
 
-        if not name or not height:
+        if not exercise or not weight or not reps or not date:
             error = "Fields cannot be empty"
         else:
             try:
                 conn.execute(
-                    "UPDATE entries SET name=?, height=? WHERE id=?",
-                    (name, height, id)
+                    "UPDATE entries SET exercise=?, weight=?, reps=?, date=? WHERE id=?",
+                    (exercise, weight, reps, date, id)
                 )
                 conn.commit()
                 conn.close()
@@ -193,20 +197,38 @@ def edit(id):
 # - Delete an entry from the database
 # - Redirect back to dashboard
 
-"""
-@app.route("/delete/<int:id>")
+
+@app.route("/delete/<int:id>", methods=["GET", "POST"])
 def delete(id):
     if "user" not in session:
         return redirect(url_for("login"))
 
-    # TODO: Connect to database
+    conn = get_db()
+    entry = conn.execute(
+    "SELECT * FROM entries WHERE id=?",
+    (id,)
+    ).fetchone()
 
-    # TODO: Delete entry WHERE id AND user
+    if not entry:
+        conn.close()
+        return "Entry not found"
+    
+    if request.method == "POST":
+        try:
+            conn.execute(
+            "DELETE FROM entries WHERE id=?",
+            (id,)
+            )
+            conn.commit()
+        except:
+            conn.rollback()
+        finally:
+            conn.close()
+        return redirect(url_for("dashboard"))
 
-    # TODO: Commit and close
+    conn.close()
+    return render_template("delete.html", entry=entry)
 
-    return redirect(url_for("dashboard"))
-"""
 
 
 @app.route("/logout")

@@ -21,15 +21,12 @@ def seed_database():
     
     # Sample users with passwords
     sample_users = [
-        ("alice", "Password123!"),
-        ("bob", "SecurePass456@"),
-        ("charlie", "MyPassword789#"),
         ("niko", "Boner!1"),
     ]
 
     sample_entries = [
-        ("clavicular", "5'11"),
-        ("beaux", "7'0"),
+        ("Bench Press", "185", "5", "May 13th 2026"),
+        ("Squat", "225", "7", "May 15th 2026"),
     ]
     
     try:
@@ -40,12 +37,12 @@ def seed_database():
                 (username, hashed_pw)
             )
             print(f"Created user: {username}")
-        for name, height in sample_entries:
+        for exercise, weight, reps, date in sample_entries:
             conn.execute(
-                "INSERT INTO entries (name, height) VALUES (?, ?)",
-                (name, height)
+                "INSERT INTO entries (exercise, weight, reps, date) VALUES (?, ?, ?, ?)",
+                (exercise, weight, reps, date)
             )
-            print(f"Created entry: {name}")
+            print(f"Created entry: {exercise}")
         
         conn.commit()
         print("\nDatabase seeding complete!")
