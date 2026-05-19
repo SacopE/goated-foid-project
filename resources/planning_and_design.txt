@@ -4,35 +4,36 @@ APP PLANNING & DESIGN
 
 1. PROJECT IDEA
 -------------------------
-- What is your app called?
-- What type of app is it? (journal, listings, notes, etc.)
-- What will users use your app for?
+- What is your app called? Awesome Workout App
+- What type of app is it? (journal, listings, notes, etc.) It’s a fitness tracking app, so more about listing and journalling
+- What will users use your app for? To track weight training progress.
 
 2. DATA MODEL (WHAT ARE YOU STORING?)
 -------------------------
-- What is a single “entry” in your app?
-- What fields will each entry have? (title, content, date, etc.)
-- How will entries be connected to a user?
+- What is a single “entry” in your app? Bench PR
+- What fields will each entry have? (title, content, date, etc.) Weight and PR type
+- How will entries be connected to a user? They are personalized to the user’s input
 
 3. CORE FEATURES (CRUD)
 -------------------------
-- What can users CREATE?
-- What will they see on the main page (READ)?
-- What can users EDIT (UPDATE)?
-- What can users DELETE?
+- What can users CREATE? A new Entry
+- What will they see on the main page (READ)? A list of their PRs
+- What can users EDIT (UPDATE)? They can edit their PRs
+- What can users DELETE? They can delete their PRs
 
 4. USER FLOW
 -------------------------
-- What happens after a user logs in?
-- What pages/routes will your app need? (dashboard, create, edit, etc.)
-- Describe a typical user experience from login → using your app
+- What happens after a user logs in? They are greeted by a page that says welcome and add exercise
+- What pages/routes will your app need? (dashboard, create, edit, etc.) They will need a create, edit, and delete route
+- Describe a typical user experience from login → using your app Upon logging in the user just creates a new exercise and after that they can edit, create, or delete an exercise
 
 5. USER EXPERIENCE (UX)
 -------------------------
-- How should your app look and feel?
-- How will users navigate between pages?
-- How will entries be displayed (list, cards, etc.)?
+- How should your app look and feel? It looks simplistic and sleek without anything distracting the user.
+- How will users navigate between pages? There are text links that lead to the different pages.
+- How will entries be displayed (list, cards, etc.)? They are displayed in cards on a dashboard once the user logs in.
 
 6. OPTIONAL FEATURES
 -------------------------
-- What extra features might you add? (search, tags, sorting, etc.)
+- What extra features might you add? (search, tags, sorting, etc.) Images describing the exercises or videos attached to the boxes so that there’s proof of the PR.
+
