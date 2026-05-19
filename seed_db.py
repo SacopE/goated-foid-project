@@ -29,6 +29,7 @@ def seed_database():
 
     sample_entries = [
         ("clavicular", "5'11"),
+        ("beaux", "7'0"),
     ]
     
     try:

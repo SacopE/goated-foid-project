@@ -22,11 +22,9 @@
         <h3>{{ entry['name'] }}</h3>
         <p>{{ entry['height'] }}</p>
 
-        <!-- TODO: Add Edit link -->
-        <!-- Example: /edit/{{ entry['id'] }} -->
+        <a href="{{ url_for('edit', id=entry['id']) }}">Edit</a>
 
-        <!-- TODO: Add Delete link -->
-        <!-- Example: /delete/{{ entry['id'] }} -->
+        <a href="/delete/{{ entry['id'] }}">Delete</a>
 
     </div>
     <hr>

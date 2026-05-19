@@ -7,15 +7,12 @@
 
 <form method="POST">
 
-    <!-- TODO: Pre-fill title using entry data -->
-    <!-- Hint: value="{{ entry['title'] }}" -->
-
-    <!-- TODO: Pre-fill content using entry data -->
-
-    <!-- TODO: Add submit button -->
+    <input name="name" placeholder="Name" value="{{entry['name'] }}"><br>
+    <input name="height" placeholder="Height" value="{{entry['height'] }}"><br>
+    <button type="submit">Update Entry</button>
 
 </form>
 
-<!-- TODO: Add a link back to dashboard -->
+<a href="{{ url_for('dashboard')}}">Back to Dashboard</a>
 
 {% endblock %}
